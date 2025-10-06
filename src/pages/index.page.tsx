@@ -13,6 +13,8 @@ export default function Page() {
         <div className="flex flex-col gap-4">
           <H1>Create org form</H1>
           <CreateOrgForm pb={pb} />
+          <br />
+          <br />
 
           <H1>Create profile form</H1>
           <CreateProfileForm pb={pb} />
