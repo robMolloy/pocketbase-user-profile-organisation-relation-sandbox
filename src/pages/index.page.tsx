@@ -2,12 +2,11 @@ import { H1 } from "@/components/custom/H1";
 import { MainLayout } from "@/components/templates/LayoutTemplate";
 import { pb } from "@/config/pocketbaseConfig";
 import { CreateOrgForm } from "@/modules/organisations/CreateOrgForm";
-import { useOrganisationsStore } from "@/modules/organisations/useOrganisationsStore";
+import { CreateProfileForm } from "@/modules/profiles/CreateProfileForm";
 import { LoggedInUserOnlyRoute } from "@/modules/routeProtector/LoggedInUserOnlyRoute";
 import { LogScreen } from "@/screens/LogScreen";
 
 export default function Page() {
-  useOrganisationsStore;
   return (
     <LoggedInUserOnlyRoute>
       <MainLayout>
@@ -16,7 +15,7 @@ export default function Page() {
           <CreateOrgForm pb={pb} />
 
           <H1>Create profile form</H1>
-          <CreateOrgForm pb={pb} />
+          <CreateProfileForm pb={pb} />
         </div>
 
         <LogScreen />

@@ -11,6 +11,8 @@ import { useUsersStore } from "./modules/auth/users/usersStore";
 import { smartSubscribeToOrganisations } from "./modules/organisations/dbOrganisationUtils";
 import { useOrganisationsStore } from "./modules/organisations/useOrganisationsStore";
 import { useThemeStore } from "./modules/themeToggle/themeStore";
+import { useProfilesStore } from "./modules/profiles/useProfilesStore";
+import { smartSubscribeToProfiles } from "./modules/profiles/dbProfileUtils";
 
 function App() {
   return useRoutes(routes);
@@ -21,6 +23,7 @@ function AppWrapper() {
   const usersStore = useUsersStore();
   const currentUserStore = useCurrentUserStore();
   const organisationsStore = useOrganisationsStore();
+  const profilesStore = useProfilesStore();
   themeStore.useThemeStoreSideEffect();
 
   useInitAuth({
@@ -29,6 +32,7 @@ function AppWrapper() {
     onIsLoggedIn: () => {
       smartSubscribeToUsers({ pb, onChange: (x) => usersStore.setData(x) });
       smartSubscribeToOrganisations({ pb, onChange: (x) => organisationsStore.setData(x) });
+      smartSubscribeToProfiles({ pb, onChange: (x) => profilesStore.setData(x) });
     },
     onIsLoggedOut: () => {},
   });
